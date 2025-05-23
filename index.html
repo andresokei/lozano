@@ -47,6 +47,93 @@
                 <h2 class="text-4xl font-bold mb-10 text-center">My Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
+                    <!-- ChefSnap Project -->
+<div class="project-card">
+  <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+    <figure class="px-4 pt-4">
+      <img src="./img/chefsnap1.png" alt="ChefSnap captura 1" class="rounded-xl h-48 w-full object-cover" />
+    </figure>
+    <div class="card-body">
+      <h3 class="card-title">ChefSnap</h3>
+      <p>ChefSnap transforma tus fotos de comida en auténticas obras de arte en segundos. Pensada para restaurantes que quieren mejorar su presencia digital sin invertir grandes sumas ni perder tiempo, utiliza IA avanzada para ajustar luz, color y nitidez de forma automática.</p>
+      <div class="card-actions justify-end mt-2">
+        <div class="badge badge-primary">Laravel</div>
+        <div class="badge badge-secondary">Redis</div>
+        <div class="badge badge-info">TailwindCSS</div>
+        <div class="badge badge-warning">JavaScript</div>
+        <div class="badge badge-accent">CSS</div>
+        <div class="badge badge-success">Stripe</div>
+        <div class="badge badge-info">Google Auth</div>
+        <div class="badge badge-neutral">IA</div>
+      </div>
+      <label for="chefsnap-modal" class="btn btn-primary mt-4">Ver más</label>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ChefSnap -->
+<input type="checkbox" id="chefsnap-modal" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box w-full max-w-4xl">
+    <h3 class="font-bold text-lg mb-4">ChefSnap - Vista Detallada</h3>
+    <!-- Carrusel de imágenes -->
+    <div class="carousel w-full">
+      <!-- Slides 1 a 9 -->
+      <div id="chefsnap-slide1" class="carousel-item relative w-full">
+        <img src="./img/chefsnap1.png" class="w-full rounded-lg" alt="ChefSnap captura 1" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#chefsnap-slide9" class="btn btn-circle">❮</a>
+          <a href="#chefsnap-slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <!-- Repite para chefsnap2.png a chefsnap9.png con IDs y enlaces prev/next -->
+      <div id="chefsnap-slide2" class="carousel-item relative w-full">
+        <img src="./img/chefsnap2.png" class="w-full rounded-lg" alt="ChefSnap captura 2" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#chefsnap-slide1" class="btn btn-circle">❮</a>
+          <a href="#chefsnap-slide3" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <!-- ... hasta chefsnap9.png ... -->
+      <div id="chefsnap-slide9" class="carousel-item relative w-full">
+        <img src="./img/chefsnap9.png" class="w-full rounded-lg" alt="ChefSnap captura 9" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#chefsnap-slide8" class="btn btn-circle">❮</a>
+          <a href="#chefsnap-slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+    <!-- Indicadores del carrusel -->
+    <div class="flex justify-center w-full py-2 gap-2">
+      <a href="#chefsnap-slide1" class="btn btn-xs">1</a>
+      <a href="#chefsnap-slide2" class="btn btn-xs">2</a>
+      <a href="#chefsnap-slide3" class="btn btn-xs">3</a>
+      <a href="#chefsnap-slide4" class="btn btn-xs">4</a>
+      <a href="#chefsnap-slide5" class="btn btn-xs">5</a>
+      <a href="#chefsnap-slide6" class="btn btn-xs">6</a>
+      <a href="#chefsnap-slide7" class="btn btn-xs">7</a>
+      <a href="#chefsnap-slide8" class="btn btn-xs">8</a>
+      <a href="#chefsnap-slide9" class="btn btn-xs">9</a>
+    </div>
+    <!-- Descripción larga del proyecto -->
+    <p class="py-4">
+      <strong>ChefSnap</strong> es una solución todo-en-uno para la mejora automática de fotografía gastronómica, diseñada específicamente para negocios de hostelería que buscan un impulso inmediato en su marketing digital.
+      Al subir tus imágenes, el sistema emplea modelos de inteligencia artificial para analizar composición, iluminación y colores, y aplica ajustes inteligentes de manera automática: correcciones de exposición, realce de tonos, balance de blancos y nitidez. Todo en cuestión de segundos.
+      <br><br>
+      Detrás de esa experiencia ultrarrápida está un backend en <em>Laravel</em> que organiza las peticiones en colas <em>Redis</em>, garantizando escalabilidad y respuesta ágil aún con cargas altas. La pasarela de pago <em>Stripe</em> permite, cuando quieras monetizar packs de retoques, ofrecer planes de suscripción o compras puntuales con total seguridad.
+      <br><br>
+      Para la autenticación de usuario, integramos <em>Google Auth</em>, de modo que tus colaboradores puedan acceder con un clic y subir fotos sin memorizar contraseñas. Y gracias al sistema de notificaciones y seguimiento de colas, siempre sabes el estado de cada imagen: subida, en procesamiento o lista para descargar.
+      <br><br>
+      Con <strong>ChefSnap</strong>, tus platos lucen tan apetitosos que impulsan reservas, “me gusta” y compartidos en redes sociales, sin que tú o tu equipo tengáis que dedicar horas al retoque manual.
+    </p>
+    <!-- Acción del modal -->
+    <div class="modal-action">
+      <label for="chefsnap-modal" class="btn">Cerrar</label>
+    </div>
+  </div>
+</div>
+
+
                      <!-- Sociogram.app Project -->
                      <div class="project-card">
                         <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
