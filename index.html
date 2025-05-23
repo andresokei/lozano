@@ -7,61 +7,152 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Custom font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
         /* Custom styles for consistent image sizing */
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             object-position: center top;
+            transition: transform 0.3s ease;
         }
         
         .carousel-image {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: contain;
             object-position: center;
-            background: #f3f4f6;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
         }
         
         .project-card {
             height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
         }
         
         .project-card .card {
             height: 100%;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .project-card .card-body {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            padding: 1.5rem;
         }
         
         .project-card .card-actions {
             margin-top: auto;
         }
         
-        /* Smooth transitions */
-        .project-card:hover {
-            transform: translateY(-4px);
-            transition: transform 0.3s ease;
-        }
-        
         /* Better spacing for badges */
         .badge {
             margin: 2px;
+            font-weight: 500;
+            border: none;
         }
         
         /* Profile image styling */
         .profile-image {
-            width: 280px;
-            height: 280px;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 6px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Custom gradient backgrounds */
+        .gradient-bg-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        /* Enhanced animations */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Custom scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced modal styling */
+        .modal-box {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        /* Custom button hover effects */
+        .btn-custom {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-custom:hover:before {
+            left: 100%;
+        }
+        
+        /* Enhanced navbar */
+        .navbar-custom {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        /* Section dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+            margin: 2rem 0;
         }
         
         /* Responsive adjustments */
@@ -75,24 +166,44 @@
             }
             
             .profile-image {
-                width: 220px;
-                height: 220px;
+                width: 240px;
+                height: 240px;
             }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
         }
     </style>
 </head>
 <body class="bg-base-200">
-    <header class="bg-base-100 shadow-lg sticky top-0 z-50">
+    <header class="navbar-custom shadow-lg sticky top-0 z-50">
         <div class="container mx-auto">
             <div class="navbar">
                 <div class="flex-1">
-                    <a href="#" class="btn btn-ghost normal-case text-xl font-bold">Andrés Suárez</a>
+                    <a href="#" class="btn btn-ghost normal-case text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Andrés Suárez
+                    </a>
                 </div>
                 <div class="flex-none">
                     <ul class="menu menu-horizontal px-1">
-                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
-                        <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
-                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors font-medium">About</a></li>
+                        <li><a href="#projects" class="hover:text-primary transition-colors font-medium">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors font-medium">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -100,45 +211,86 @@
     </header>
 
     <main>
-        <section id="about" class="py-20 bg-gradient-to-br from-base-100 to-base-200">
+        <!-- Hero Section -->
+        <section class="py-20 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h1 class="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-float">
+                        Web Developer
+                    </h1>
+                    <p class="text-xl md:text-2xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
+                        Crafting digital experiences that make a difference
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-base-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">About Me 🌊🧑‍💻🚀</h2>
-                <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    About Me 🌊🧑‍💻🚀
+                </h2>
+                <p class="text-center text-lg opacity-70 mb-16">Getting to know the person behind the code</p>
+                
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-16">
                     <div class="relative">
-                        <img src="./img/yo.jpg" alt="Andrés Suárez" class="profile-image rounded-full" />
-                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 animate-pulse"></div>
+                        <img src="./img/yo.jpg" alt="Andrés Suárez" class="profile-image rounded-full relative z-10" />
                     </div>
                     <div class="max-w-2xl text-center lg:text-left">
-                        <p class="text-lg leading-relaxed mb-6">
+                        <p class="text-lg leading-relaxed mb-8 text-base-content/80">
                           Hi, I'm Andrés Suárez, a web developer from Asturias. I specialize in creating user-friendly websites with WordPress and Laravel, always aiming to deliver clean, effective solutions. I'm passionate about turning ideas into impactful digital experiences, and I'm excited to collaborate and bring your project to life. Let's make it happen!
                         </p>
-                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                            <span class="badge badge-primary badge-lg">Laravel</span>
-                            <span class="badge badge-secondary badge-lg">WordPress</span>
-                            <span class="badge badge-accent badge-lg">PHP</span>
-                            <span class="badge badge-info badge-lg">JavaScript</span>
-                            <span class="badge badge-success badge-lg">SEO</span>
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
+                            <span class="badge badge-primary badge-lg px-4 py-3 text-sm font-semibold">Laravel</span>
+                            <span class="badge badge-secondary badge-lg px-4 py-3 text-sm font-semibold">WordPress</span>
+                            <span class="badge badge-accent badge-lg px-4 py-3 text-sm font-semibold">PHP</span>
+                            <span class="badge badge-info badge-lg px-4 py-3 text-sm font-semibold">JavaScript</span>
+                            <span class="badge badge-success badge-lg px-4 py-3 text-sm font-semibold">SEO</span>
+                            <span class="badge badge-warning badge-lg px-4 py-3 text-sm font-semibold">UI/UX</span>
+                        </div>
+                        <div class="stats stats-vertical lg:stats-horizontal shadow-lg">
+                            <div class="stat">
+                                <div class="stat-value text-primary">6+</div>
+                                <div class="stat-title">Projects</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value text-secondary">3+</div>
+                                <div class="stat-title">Years</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value text-accent">100%</div>
+                                <div class="stat-title">Satisfaction</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-20 bg-base-200">
+        <div class="section-divider"></div>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-base-200">
             <div class="container mx-auto px-4">
-                <h2 class="text-5xl font-bold mb-4 text-center">My Projects</h2>
-                <p class="text-center text-lg opacity-70 mb-12">A showcase of my latest work and achievements</p>
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    My Projects
+                </h2>
+                <p class="text-center text-lg opacity-70 mb-16">A showcase of my latest work and achievements</p>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                    <!-- ChefSnap Project -->
                    <div class="project-card">
                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                       <figure class="px-4 pt-4">
+                       <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                          <img src="./img/chefsnap1.png" alt="ChefSnap captura 1" class="project-image rounded-xl" />
                        </figure>
                        <div class="card-body">
-                         <h3 class="card-title text-xl mb-2">ChefSnap</h3>
-                         <p class="text-sm opacity-80 flex-grow">ChefSnap transforma tus fotos de comida en auténticas obras de arte en segundos. Pensada para restaurantes que quieren mejorar su presencia digital sin invertir grandes sumas ni perder tiempo, utiliza IA avanzada para ajustar luz, color y nitidez de forma automática.</p>
+                         <h3 class="card-title text-xl mb-3 text-primary">ChefSnap</h3>
+                         <p class="text-sm opacity-80 flex-grow leading-relaxed">ChefSnap transforma tus fotos de comida en auténticas obras de arte en segundos. Pensada para restaurantes que quieren mejorar su presencia digital sin invertir grandes sumas ni perder tiempo, utiliza IA avanzada para ajustar luz, color y nitidez de forma automática.</p>
                          <div class="card-actions justify-start mt-4 flex-wrap">
                            <div class="badge badge-primary">Laravel</div>
                            <div class="badge badge-secondary">Redis</div>
@@ -149,7 +301,10 @@
                            <div class="badge badge-info">Google Auth</div>
                            <div class="badge badge-neutral">IA</div>
                          </div>
-                         <label for="chefsnap-modal" class="btn btn-primary btn-block mt-4">Ver más</label>
+                         <label for="chefsnap-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                             <i class="fas fa-eye mr-2"></i>
+                             Ver más
+                         </label>
                        </div>
                      </div>
                    </div>
@@ -157,18 +312,21 @@
                    <!-- Sociogram.app Project -->
                    <div class="project-card">
                       <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                          <figure class="px-4 pt-4">
+                          <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                               <img src="./img/sociogram.png" alt="Sociogram.app" class="project-image rounded-xl" />
                           </figure>
                           <div class="card-body">
-                              <h3 class="card-title text-xl mb-2">Sociogram.app</h3>
-                              <p class="text-sm opacity-80 flex-grow">Sociogram.app is a Laravel-based platform for educators and researchers, allowing the creation and analysis of sociograms. It simplifies social network analysis with intuitive tools and data visualization.</p>
+                              <h3 class="card-title text-xl mb-3 text-primary">Sociogram.app</h3>
+                              <p class="text-sm opacity-80 flex-grow leading-relaxed">Sociogram.app is a Laravel-based platform for educators and researchers, allowing the creation and analysis of sociograms. It simplifies social network analysis with intuitive tools and data visualization.</p>
                               <div class="card-actions justify-start mt-4 flex-wrap">
                                   <div class="badge badge-success">Laravel</div>
                                   <div class="badge badge-warning">PHP</div>
                                   <div class="badge badge-info">MySQL</div>
                               </div>
-                              <label for="sociogram-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                              <label for="sociogram-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                                  <i class="fas fa-eye mr-2"></i>
+                                  View More
+                              </label>
                           </div>
                       </div>
                   </div>
@@ -176,18 +334,21 @@
                    <!-- Global Glider Project -->
                    <div class="project-card">
                       <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                          <figure class="px-4 pt-4">
+                          <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                               <img src="./img/global-glider.png" alt="Global Glider" class="project-image rounded-xl" />
                           </figure>
                           <div class="card-body">
-                              <h3 class="card-title text-xl mb-2">Global Glider</h3>
-                              <p class="text-sm opacity-80 flex-grow">Global Glider is an e-commerce platform built with PHP and JavaScript. It integrates PayPal and offers real-time surf spot conditions, allowing users to plan surf trips and make secure purchases.</p>
+                              <h3 class="card-title text-xl mb-3 text-primary">Global Glider</h3>
+                              <p class="text-sm opacity-80 flex-grow leading-relaxed">Global Glider is an e-commerce platform built with PHP and JavaScript. It integrates PayPal and offers real-time surf spot conditions, allowing users to plan surf trips and make secure purchases.</p>
                               <div class="card-actions justify-start mt-4 flex-wrap">
                                   <div class="badge badge-error">PHP</div>
                                   <div class="badge badge-primary">HTML</div>
                                   <div class="badge badge-accent">CSS</div>
                               </div>
-                              <label for="glider-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                              <label for="glider-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                                  <i class="fas fa-eye mr-2"></i>
+                                  View More
+                              </label>
                           </div>
                       </div>
                   </div>
@@ -195,18 +356,21 @@
                   <!-- LaReserva21 Project -->
                   <div class="project-card">
                       <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                          <figure class="px-4 pt-4">
+                          <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                               <img src="./img/reserva1.png" alt="LaReserva21" class="project-image rounded-xl" />
                           </figure>
                           <div class="card-body">
-                              <h3 class="card-title text-xl mb-2">LaReserva21</h3>
-                              <p class="text-sm opacity-80 flex-grow">LaReserva21 is a WordPress website for a beach restaurant, focused on SEO and client acquisition. It helped increase customer traffic by optimizing for keywords like "chiringuito Asturias" and integrating Google My Business.</p>
+                              <h3 class="card-title text-xl mb-3 text-primary">LaReserva21</h3>
+                              <p class="text-sm opacity-80 flex-grow leading-relaxed">LaReserva21 is a WordPress website for a beach restaurant, focused on SEO and client acquisition. It helped increase customer traffic by optimizing for keywords like "chiringuito Asturias" and integrating Google My Business.</p>
                               <div class="card-actions justify-start mt-4 flex-wrap">
                                   <div class="badge badge-primary">WordPress</div>
                                   <div class="badge badge-secondary">HTML</div>
                                   <div class="badge badge-accent">CSS</div>
                               </div>
-                              <label for="reserva21-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                              <label for="reserva21-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                                  <i class="fas fa-eye mr-2"></i>
+                                  View More
+                              </label>
                           </div>
                       </div>
                   </div>
@@ -214,18 +378,21 @@
                   <!-- Andresokei Project -->
                   <div class="project-card">
                       <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                          <figure class="px-4 pt-4">
+                          <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                               <img src="./img/okei1.png" alt="Andresokei" class="project-image rounded-xl" />
                           </figure>
                           <div class="card-body">
-                              <h3 class="card-title text-xl mb-2">Andresokei</h3>
-                              <p class="text-sm opacity-80 flex-grow">Andresokei is a WordPress portfolio site for a photographer and videographer, designed to generate leads for wedding photography in Asturias. It uses SEO to attract couples seeking wedding services.</p>
+                              <h3 class="card-title text-xl mb-3 text-primary">Andresokei</h3>
+                              <p class="text-sm opacity-80 flex-grow leading-relaxed">Andresokei is a WordPress portfolio site for a photographer and videographer, designed to generate leads for wedding photography in Asturias. It uses SEO to attract couples seeking wedding services.</p>
                               <div class="card-actions justify-start mt-4 flex-wrap">
                                   <div class="badge badge-primary">WordPress</div>
                                   <div class="badge badge-secondary">HTML</div>
                                   <div class="badge badge-accent">CSS</div>
                               </div>
-                              <label for="okei-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                              <label for="okei-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                                  <i class="fas fa-eye mr-2"></i>
+                                  View More
+                              </label>
                           </div>
                       </div>
                   </div>
@@ -233,75 +400,134 @@
                   <!-- Visitar Luarca Project -->
                   <div class="project-card">
                       <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-                          <figure class="px-4 pt-4">
+                          <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl">
                               <img src="./img/luarca.png" alt="Visitar Luarca" class="project-image rounded-xl" />
                           </figure>
                           <div class="card-body">
-                              <h3 class="card-title text-xl mb-2">Visitar Luarca</h3>
-                              <p class="text-sm opacity-80 flex-grow">Visitar Luarca is a WordPress-based tourist guide that showcases attractions, accommodations, and events in Luarca. It helps visitors plan their trips with easy access to local information.</p>
+                              <h3 class="card-title text-xl mb-3 text-primary">Visitar Luarca</h3>
+                              <p class="text-sm opacity-80 flex-grow leading-relaxed">Visitar Luarca is a WordPress-based tourist guide that showcases attractions, accommodations, and events in Luarca. It helps visitors plan their trips with easy access to local information.</p>
                               <div class="card-actions justify-start mt-4 flex-wrap">
                                   <div class="badge badge-primary">WordPress</div>
                                   <div class="badge badge-secondary">HTML</div>
                                   <div class="badge badge-accent">CSS</div>
                               </div>
-                              <label for="luarca-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                              <label for="luarca-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                                  <i class="fas fa-eye mr-2"></i>
+                                  View More
+                              </label>
                           </div>
                       </div>
                   </div>
               </div>
 
-                <!-- ChefSnap Modal -->
+                <!-- ChefSnap Modal with ALL 9 images -->
                 <input type="checkbox" id="chefsnap-modal" class="modal-toggle" />
                 <div class="modal">
                   <div class="modal-box w-full max-w-6xl">
-                    <h3 class="font-bold text-2xl mb-6">ChefSnap - Vista Detallada</h3>
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">ChefSnap - Vista Detallada</h3>
                     <div class="carousel w-full">
+                      <!-- Slide 1 -->
                       <div id="chefsnap-slide1" class="carousel-item relative w-full">
-                        <img src="./img/chefsnap1.png" class="carousel-image rounded-lg" alt="ChefSnap captura 1" />
+                        <img src="./img/chefsnap1.png" class="carousel-image" alt="ChefSnap captura 1" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#chefsnap-slide9" class="btn btn-circle btn-primary">❮</a>
                           <a href="#chefsnap-slide2" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
+                      <!-- Slide 2 -->
                       <div id="chefsnap-slide2" class="carousel-item relative w-full">
-                        <img src="./img/chefsnap2.png" class="carousel-image rounded-lg" alt="ChefSnap captura 2" />
+                        <img src="./img/chefsnap2.png" class="carousel-image" alt="ChefSnap captura 2" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#chefsnap-slide1" class="btn btn-circle btn-primary">❮</a>
                           <a href="#chefsnap-slide3" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
+                      <!-- Slide 3 -->
                       <div id="chefsnap-slide3" class="carousel-item relative w-full">
-                        <img src="./img/chefsnap3.png" class="carousel-image rounded-lg" alt="ChefSnap captura 3" />
+                        <img src="./img/chefsnap3.png" class="carousel-image" alt="ChefSnap captura 3" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#chefsnap-slide2" class="btn btn-circle btn-primary">❮</a>
                           <a href="#chefsnap-slide4" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
+                      <!-- Slide 4 -->
+                      <div id="chefsnap-slide4" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap4.png" class="carousel-image" alt="ChefSnap captura 4" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide5" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <!-- Slide 5 -->
+                      <div id="chefsnap-slide5" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap5.png" class="carousel-image" alt="ChefSnap captura 5" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide4" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide6" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <!-- Slide 6 -->
+                      <div id="chefsnap-slide6" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap6.png" class="carousel-image" alt="ChefSnap captura 6" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide5" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide7" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <!-- Slide 7 -->
+                      <div id="chefsnap-slide7" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap7.png" class="carousel-image" alt="ChefSnap captura 7" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide6" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide8" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <!-- Slide 8 -->
+                      <div id="chefsnap-slide8" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap8.png" class="carousel-image" alt="ChefSnap captura 8" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide7" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide9" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <!-- Slide 9 -->
                       <div id="chefsnap-slide9" class="carousel-item relative w-full">
-                        <img src="./img/chefsnap9.png" class="carousel-image rounded-lg" alt="ChefSnap captura 9" />
+                        <img src="./img/chefsnap9.png" class="carousel-image" alt="ChefSnap captura 9" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#chefsnap-slide8" class="btn btn-circle btn-primary">❮</a>
                           <a href="#chefsnap-slide1" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                     </div>
+                    <!-- All 9 indicators -->
                     <div class="flex justify-center w-full py-4 gap-2">
                       <a href="#chefsnap-slide1" class="btn btn-xs btn-primary">1</a>
                       <a href="#chefsnap-slide2" class="btn btn-xs">2</a>
                       <a href="#chefsnap-slide3" class="btn btn-xs">3</a>
+                      <a href="#chefsnap-slide4" class="btn btn-xs">4</a>
+                      <a href="#chefsnap-slide5" class="btn btn-xs">5</a>
+                      <a href="#chefsnap-slide6" class="btn btn-xs">6</a>
+                      <a href="#chefsnap-slide7" class="btn btn-xs">7</a>
+                      <a href="#chefsnap-slide8" class="btn btn-xs">8</a>
                       <a href="#chefsnap-slide9" class="btn btn-xs">9</a>
                     </div>
                     <div class="prose max-w-none">
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                         <strong>ChefSnap</strong> es una solución todo-en-uno para la mejora automática de fotografía gastronómica, diseñada específicamente para negocios de hostelería que buscan un impulso inmediato en su marketing digital.
                         Al subir tus imágenes, el sistema emplea modelos de inteligencia artificial para analizar composición, iluminación y colores, y aplica ajustes inteligentes de manera automática: correcciones de exposición, realce de tonos, balance de blancos y nitidez. Todo en cuestión de segundos.
                       </p>
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                         Detrás de esa experiencia ultrarrápida está un backend en <em>Laravel</em> que organiza las peticiones en colas <em>Redis</em>, garantizando escalabilidad y respuesta ágil aún con cargas altas. La pasarela de pago <em>Stripe</em> permite, cuando quieras monetizar packs de retoques, ofrecer planes de suscripción o compras puntuales con total seguridad.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                        Para la autenticación de usuario, integramos <em>Google Auth</em>, de modo que tus colaboradores puedan acceder con un clic y subir fotos sin memorizar contraseñas. Con <strong>ChefSnap</strong>, tus platos lucen tan apetitosos que impulsan reservas, "me gusta" y compartidos en redes sociales, sin que tú o tu equipo tengáis que dedicar horas al retoque manual.
                       </p>
                     </div>
                     <div class="modal-action">
-                      <label for="chefsnap-modal" class="btn btn-primary">Cerrar</label>
+                      <label for="chefsnap-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Cerrar
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -310,24 +536,24 @@
                 <input type="checkbox" id="reserva21-modal" class="modal-toggle" />
                 <div class="modal">
                   <div class="modal-box w-full max-w-6xl">
-                    <h3 class="font-bold text-2xl mb-6">LaReserva21 - Vista Detallada</h3>
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">LaReserva21 - Vista Detallada</h3>
                     <div class="carousel w-full">
                       <div id="reserva-slide1" class="carousel-item relative w-full">
-                        <img src="./img/reserva1.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 1" />
+                        <img src="./img/reserva1.png" class="carousel-image" alt="LaReserva21 Imagen 1" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#reserva-slide3" class="btn btn-circle btn-primary">❮</a>
                           <a href="#reserva-slide2" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="reserva-slide2" class="carousel-item relative w-full">
-                        <img src="./img/reserva2.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 2" />
+                        <img src="./img/reserva2.png" class="carousel-image" alt="LaReserva21 Imagen 2" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#reserva-slide1" class="btn btn-circle btn-primary">❮</a>
                           <a href="#reserva-slide3" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="reserva-slide3" class="carousel-item relative w-full">
-                        <img src="./img/reserva3.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 3" />
+                        <img src="./img/reserva3.png" class="carousel-image" alt="LaReserva21 Imagen 3" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#reserva-slide2" class="btn btn-circle btn-primary">❮</a>
                           <a href="#reserva-slide1" class="btn btn-circle btn-primary">❯</a>
@@ -340,7 +566,7 @@
                       <a href="#reserva-slide3" class="btn btn-xs">3</a>
                     </div>
                     <div class="prose max-w-none">
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                           LaReserva21 is a website designed to enhance the digital presence of a coastal restaurant, with a strong emphasis on SEO and client acquisition. I successfully positioned the site for high-impact transactional keywords such as "chiringuito Asturias," which drove organic traffic to the business. Additionally, I optimized the user experience by ensuring the menu was easy to find, allowing visitors to quickly access key information.
                       </p>
                       <p class="text-base leading-relaxed">
@@ -348,8 +574,14 @@
                       </p>
                     </div>
                     <div class="modal-action">
-                      <a href="https://lareserva21.com" class="btn btn-secondary" target="_blank">Visitar sitio web</a>
-                      <label for="reserva21-modal" class="btn btn-primary">Close</label>
+                      <a href="https://lareserva21.com" class="btn btn-secondary btn-custom" target="_blank">
+                          <i class="fas fa-external-link-alt mr-2"></i>
+                          Visitar sitio web
+                      </a>
+                      <label for="reserva21-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Close
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -358,24 +590,24 @@
                 <input type="checkbox" id="okei-modal" class="modal-toggle" />
                 <div class="modal">
                   <div class="modal-box w-full max-w-6xl">
-                    <h3 class="font-bold text-2xl mb-6">Andresokei - Detailed View</h3>
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Andresokei - Detailed View</h3>
                     <div class="carousel w-full">
                       <div id="andres-slide1" class="carousel-item relative w-full">
-                        <img src="./img/okei1.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 1" />
+                        <img src="./img/okei1.png" class="carousel-image" alt="Andresokei Screenshot 1" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#andres-slide3" class="btn btn-circle btn-primary">❮</a>
                           <a href="#andres-slide2" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="andres-slide2" class="carousel-item relative w-full">
-                        <img src="./img/okei2.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 2" />
+                        <img src="./img/okei2.png" class="carousel-image" alt="Andresokei Screenshot 2" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#andres-slide1" class="btn btn-circle btn-primary">❮</a>
                           <a href="#andres-slide3" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="andres-slide3" class="carousel-item relative w-full">
-                        <img src="./img/okei3.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 3" />
+                        <img src="./img/okei3.png" class="carousel-image" alt="Andresokei Screenshot 3" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#andres-slide2" class="btn btn-circle btn-primary">❮</a>
                           <a href="#andres-slide1" class="btn btn-circle btn-primary">❯</a>
@@ -388,7 +620,7 @@
                       <a href="#andres-slide3" class="btn btn-xs">3</a>
                     </div>
                     <div class="prose max-w-none">
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                           Andresokei is a dynamic WordPress and Elementor-powered website designed to achieve two key goals: presenting the portfolio of a photographer and videographer, and driving lead generation for wedding photography services in Asturias.
                       </p>
                       <p class="text-base leading-relaxed">
@@ -396,8 +628,14 @@
                       </p>
                     </div>
                     <div class="modal-action">
-                      <a href="https://andresokei.com" class="btn btn-secondary" target="_blank">Visit Website</a>
-                      <label for="okei-modal" class="btn btn-primary">Close</label>
+                      <a href="https://andresokei.com" class="btn btn-secondary btn-custom" target="_blank">
+                          <i class="fas fa-external-link-alt mr-2"></i>
+                          Visit Website
+                      </a>
+                      <label for="okei-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Close
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -406,24 +644,24 @@
                 <input type="checkbox" id="sociogram-modal" class="modal-toggle" />
                 <div class="modal">
                   <div class="modal-box w-full max-w-6xl">
-                    <h3 class="font-bold text-2xl mb-6">Sociogram.app - Vista Detallada</h3>
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sociogram.app - Vista Detallada</h3>
                     <div class="carousel w-full">
                       <div id="socio-slide1" class="carousel-item relative w-full">
-                        <img src="./img/sociogram.png" class="carousel-image rounded-lg" alt="Sociogram Imagen 1" />
+                        <img src="./img/sociogram.png" class="carousel-image" alt="Sociogram Imagen 1" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#socio-slide3" class="btn btn-circle btn-primary">❮</a>
                           <a href="#socio-slide2" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="socio-slide2" class="carousel-item relative w-full">
-                        <img src="./img/sociogram2.png" class="carousel-image rounded-lg" alt="Sociogram Imagen 2" />
+                        <img src="./img/sociogram2.png" class="carousel-image" alt="Sociogram Imagen 2" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#socio-slide1" class="btn btn-circle btn-primary">❮</a>
                           <a href="#socio-slide3" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="socio-slide3" class="carousel-item relative w-full">
-                        <img src="./img/sociograma4.jpg" class="carousel-image rounded-lg" alt="Sociogram Imagen 3" />
+                        <img src="./img/sociograma4.jpg" class="carousel-image" alt="Sociogram Imagen 3" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#socio-slide2" class="btn btn-circle btn-primary">❮</a>
                           <a href="#socio-slide1" class="btn btn-circle btn-primary">❯</a>
@@ -436,7 +674,7 @@
                       <a href="#socio-slide3" class="btn btn-xs">3</a>
                     </div>
                     <div class="prose max-w-none">
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                           Sociogram.app is an innovative platform built with Laravel, aimed at providing educators and social researchers with the tools to create and analyze sociograms effectively. This web application facilitates social network analysis, allowing users to visualize interpersonal relationships within groups, such as classrooms or research samples.
                       </p>
                       <p class="text-base leading-relaxed">
@@ -444,8 +682,14 @@
                       </p>
                     </div>
                     <div class="modal-action">
-                      <a href="https://sociogram.app" class="btn btn-secondary" target="_blank">Visitar sitio web</a>
-                      <label for="sociogram-modal" class="btn btn-primary">Cerrar</label>
+                      <a href="https://sociogram.app" class="btn btn-secondary btn-custom" target="_blank">
+                          <i class="fas fa-external-link-alt mr-2"></i>
+                          Visitar sitio web
+                      </a>
+                      <label for="sociogram-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Cerrar
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -454,24 +698,24 @@
                 <input type="checkbox" id="glider-modal" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box w-full max-w-6xl">
-                        <h3 class="font-bold text-2xl mb-6">Global Glider - Detailed View</h3>
+                        <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Global Glider - Detailed View</h3>
                         <div class="carousel w-full">
                             <div id="glide1" class="carousel-item relative w-full">
-                                <img src="./img/global-glider.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 1" />
+                                <img src="./img/global-glider.png" class="carousel-image" alt="Global Glider Screenshot 1" />
                                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                     <a href="#glide3" class="btn btn-circle btn-primary">❮</a> 
                                     <a href="#glide2" class="btn btn-circle btn-primary">❯</a>
                                 </div>
                             </div> 
                             <div id="glide2" class="carousel-item relative w-full">
-                                <img src="./img/global-glider2.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 2" />
+                                <img src="./img/global-glider2.png" class="carousel-image" alt="Global Glider Screenshot 2" />
                                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                     <a href="#glide1" class="btn btn-circle btn-primary">❮</a> 
                                     <a href="#glide3" class="btn btn-circle btn-primary">❯</a>
                                 </div>
                             </div> 
                             <div id="glide3" class="carousel-item relative w-full">
-                                <img src="./img/global-glider3.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 3" />
+                                <img src="./img/global-glider3.png" class="carousel-image" alt="Global Glider Screenshot 3" />
                                 <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                     <a href="#glide2" class="btn btn-circle btn-primary">❮</a> 
                                     <a href="#glide1" class="btn btn-circle btn-primary">❯</a>
@@ -484,7 +728,7 @@
                             <a href="#glide3" class="btn btn-xs">3</a>
                         </div>
                         <div class="prose max-w-none">
-                            <p class="text-base leading-relaxed">
+                            <p class="text-base leading-relaxed mb-4">
                                 Global Glider is an innovative e-commerce platform designed to cater to surf enthusiasts. Built using PHP and vanilla JavaScript, the platform allows users to search surf spots across the globe and access real-time information about weather and wave conditions, making it an essential tool for surfers planning their next adventure.
                             </p>
                             <p class="text-base leading-relaxed">
@@ -492,7 +736,10 @@
                             </p>
                         </div>
                         <div class="modal-action">
-                            <label for="glider-modal" class="btn btn-primary">Close</label>
+                            <label for="glider-modal" class="btn btn-primary btn-custom">
+                                <i class="fas fa-times mr-2"></i>
+                                Close
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -501,24 +748,24 @@
                 <input type="checkbox" id="luarca-modal" class="modal-toggle" />
                 <div class="modal">
                   <div class="modal-box w-full max-w-6xl">
-                    <h3 class="font-bold text-2xl mb-6">Visitar Luarca - Detailed View</h3>
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Visitar Luarca - Detailed View</h3>
                     <div class="carousel w-full">
                       <div id="luarca-slide1" class="carousel-item relative w-full">
-                        <img src="./img/luarca.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 1" />
+                        <img src="./img/luarca.png" class="carousel-image" alt="Visitar Luarca Screenshot 1" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#luarca-slide3" class="btn btn-circle btn-primary">❮</a>
                           <a href="#luarca-slide2" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="luarca-slide2" class="carousel-item relative w-full">
-                        <img src="./img/luarca2.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 2" />
+                        <img src="./img/luarca2.png" class="carousel-image" alt="Visitar Luarca Screenshot 2" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#luarca-slide1" class="btn btn-circle btn-primary">❮</a>
                           <a href="#luarca-slide3" class="btn btn-circle btn-primary">❯</a>
                         </div>
                       </div>
                       <div id="luarca-slide3" class="carousel-item relative w-full">
-                        <img src="./img/luarca3.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 3" />
+                        <img src="./img/luarca3.png" class="carousel-image" alt="Visitar Luarca Screenshot 3" />
                         <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                           <a href="#luarca-slide2" class="btn btn-circle btn-primary">❮</a>
                           <a href="#luarca-slide1" class="btn btn-circle btn-primary">❯</a>
@@ -531,7 +778,7 @@
                       <a href="#luarca-slide3" class="btn btn-xs">3</a>
                     </div>
                     <div class="prose max-w-none">
-                      <p class="text-base leading-relaxed">
+                      <p class="text-base leading-relaxed mb-4">
                         Visitar Luarca is a WordPress-based tourist guide for Luarca, showcasing local attractions, accommodations, and cultural events. The website aims to promote tourism in the region by providing visitors with comprehensive information and easy navigation.
                       </p>
                       <p class="text-base leading-relaxed">
@@ -539,44 +786,113 @@
                       </p>
                     </div>
                     <div class="modal-action">
-                      <a href="https://luarcaasturias.es/" class="btn btn-secondary" target="_blank">Visit Website</a>
-                      <label for="luarca-modal" class="btn btn-primary">Close</label>
+                      <a href="https://luarcaasturias.es/" class="btn btn-secondary btn-custom" target="_blank">
+                          <i class="fas fa-external-link-alt mr-2"></i>
+                          Visit Website
+                      </a>
+                      <label for="luarca-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Close
+                      </label>
                     </div>
                   </div>
                 </div>
         </section>
 
-        <section id="contact" class="py-20 bg-gradient-to-br from-base-100 to-base-200">
-            <div class="container mx-auto px-4">
-                <h2 class="text-5xl font-bold mb-4 text-center">Get In Touch</h2>
-                <p class="text-center text-lg opacity-70 mb-12">Ready to start your next project? Let's make it happen!</p>
-                <div class="max-w-lg mx-auto">
-                    <div class="card bg-base-100 shadow-2xl">
-                        <div class="card-body">
+        <div class="section-divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Get In Touch
+                </h2>
+                <p class="text-center text-lg opacity-70 mb-16">Ready to start your next project? Let's make it happen!</p>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div class="card bg-base-100 shadow-2xl border border-primary/10">
+                        <div class="card-body p-8">
+                            <div class="text-center mb-8">
+                                <div class="avatar">
+                                    <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img src="./img/yo.jpg" alt="Andrés Suárez" />
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-bold mt-4">Let's Work Together</h3>
+                                <p class="opacity-70">I'd love to hear about your project</p>
+                            </div>
+                            
                             <form action="https://formspree.io/f/movageyg" method="POST" class="space-y-6">
-                                <div class="form-control">
-                                    <label class="label" for="name">
-                                        <span class="label-text font-semibold">Your Name</span>
-                                    </label>
-                                    <input type="text" id="name" name="name" class="input input-bordered input-primary w-full focus:input-primary" placeholder="Enter your name" required />
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-control">
+                                        <label class="label" for="name">
+                                            <span class="label-text font-semibold text-base">Your Name</span>
+                                        </label>
+                                        <input type="text" id="name" name="name" class="input input-bordered input-primary w-full focus:input-primary h-12" placeholder="Enter your name" required />
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="label" for="email">
+                                            <span class="label-text font-semibold text-base">Your Email</span>
+                                        </label>
+                                        <input type="email" id="email" name="email" class="input input-bordered input-primary w-full focus:input-primary h-12" placeholder="Enter your email" required />
+                                    </div>
                                 </div>
                                 <div class="form-control">
-                                    <label class="label" for="email">
-                                        <span class="label-text font-semibold">Your Email</span>
+                                    <label class="label" for="subject">
+                                        <span class="label-text font-semibold text-base">Subject</span>
                                     </label>
-                                    <input type="email" id="email" name="email" class="input input-bordered input-primary w-full focus:input-primary" placeholder="Enter your email" required />
+                                    <input type="text" id="subject" name="subject" class="input input-bordered input-primary w-full focus:input-primary h-12" placeholder="What's this about?" required />
                                 </div>
                                 <div class="form-control">
                                     <label class="label" for="message">
-                                        <span class="label-text font-semibold">Your Message</span>
+                                        <span class="label-text font-semibold text-base">Your Message</span>
                                     </label>
-                                    <textarea id="message" name="message" class="textarea textarea-bordered textarea-primary h-32 focus:textarea-primary resize-none" placeholder="Tell me about your project..." required></textarea>
+                                    <textarea id="message" name="message" class="textarea textarea-bordered textarea-primary h-36 focus:textarea-primary resize-none" placeholder="Tell me about your project..." required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg w-full">
-                                    <i class="fas fa-paper-plane mr-2"></i>
+                                <button type="submit" class="btn btn-primary btn-lg w-full h-14 btn-custom text-base">
+                                    <i class="fas fa-paper-plane mr-3"></i>
                                     Send Your Message
                                 </button>
                             </form>
+                            
+                            <div class="divider my-8">OR</div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                                <div class="flex flex-col items-center space-y-2">
+                                    <div class="avatar placeholder">
+                                        <div class="bg-primary text-primary-content rounded-full w-12">
+                                            <i class="fas fa-envelope text-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <p class="text-sm opacity-70">Quick response</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center space-y-2">
+                                    <div class="avatar placeholder">
+                                        <div class="bg-secondary text-secondary-content rounded-full w-12">
+                                            <i class="fas fa-phone text-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Call</p>
+                                        <p class="text-sm opacity-70">Let's talk</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center space-y-2">
+                                    <div class="avatar placeholder">
+                                        <div class="bg-accent text-accent-content rounded-full w-12">
+                                            <i class="fas fa-calendar text-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Meeting</p>
+                                        <p class="text-sm opacity-70">Face to face</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -584,22 +900,72 @@
         </section>
     </main>
 
-    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
-        <div class="grid grid-flow-col gap-6">
-            <a href="#about" class="link link-hover text-lg hover:text-primary transition-colors">About</a> 
-            <a href="#projects" class="link link-hover text-lg hover:text-primary transition-colors">Projects</a> 
-            <a href="#contact" class="link link-hover text-lg hover:text-primary transition-colors">Contact</a>
-        </div> 
-        <div>
-            <div class="grid grid-flow-col gap-6">
-                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a> 
-                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-github"></i></a> 
-                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+    <footer class="footer footer-center p-12 bg-base-300 text-base-content relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5"></div>
+        <div class="relative z-10">
+            <div class="grid grid-flow-col gap-8 mb-8">
+                <a href="#about" class="link link-hover text-lg hover:text-primary transition-colors font-medium">About</a> 
+                <a href="#projects" class="link link-hover text-lg hover:text-primary transition-colors font-medium">Projects</a> 
+                <a href="#contact" class="link link-hover text-lg hover:text-primary transition-colors font-medium">Contact</a>
+            </div> 
+            <div class="mb-8">
+                <div class="grid grid-flow-col gap-6">
+                    <a href="#" class="text-3xl hover:text-primary transition-colors transform hover:scale-110 duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a> 
+                    <a href="#" class="text-3xl hover:text-primary transition-colors transform hover:scale-110 duration-300">
+                        <i class="fab fa-github"></i>
+                    </a> 
+                    <a href="#" class="text-3xl hover:text-primary transition-colors transform hover:scale-110 duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div> 
+            <div class="text-center">
+                <p class="text-sm opacity-70 mb-2">© 2024 Andrés Suárez. All rights reserved.</p>
+                <p class="text-xs opacity-50">Made with ❤️ in Asturias</p>
             </div>
-        </div> 
-        <div>
-            <p class="text-sm opacity-70">© 2024 Andrés Suárez. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to contact form
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="loading loading-spinner loading-sm mr-2"></span>Sending...';
+            button.disabled = true;
+            
+            // Re-enable after 3 seconds (for demo purposes)
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 3000);
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('header');
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
