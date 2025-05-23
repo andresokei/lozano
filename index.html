@@ -7,19 +7,92 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for consistent image sizing */
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        .carousel-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            object-position: center;
+            background: #f3f4f6;
+        }
+        
+        .project-card {
+            height: 100%;
+        }
+        
+        .project-card .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card .card-actions {
+            margin-top: auto;
+        }
+        
+        /* Smooth transitions */
+        .project-card:hover {
+            transform: translateY(-4px);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Better spacing for badges */
+        .badge {
+            margin: 2px;
+        }
+        
+        /* Profile image styling */
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-image {
+                height: 180px;
+            }
+            
+            .carousel-image {
+                height: 300px;
+            }
+            
+            .profile-image {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
 </head>
 <body class="bg-base-200">
-    <header class="bg-base-100 shadow-lg">
+    <header class="bg-base-100 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto">
             <div class="navbar">
                 <div class="flex-1">
-                    <a href="#" class="btn btn-ghost normal-case text-xl">Andrés Suárez</a>
+                    <a href="#" class="btn btn-ghost normal-case text-xl font-bold">Andrés Suárez</a>
                 </div>
                 <div class="flex-none">
                     <ul class="menu menu-horizontal px-1">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#projects" class="hover:text-primary transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,540 +100,505 @@
     </header>
 
     <main>
-        <section id="about" class="py-16 bg-base-100">
+        <section id="about" class="py-20 bg-gradient-to-br from-base-100 to-base-200">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-8 text-center">About Me 🌊🧑‍💻🚀</h2>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <img src="./img/yo.jpg" alt="Andrés Suárez" class="rounded-full w-64 h-64 object-cover shadow-lg" />
-                    <div class="max-w-md">
-                        <p class="mb-4">
-                          Hi, I'm Andrés Suárez, a web developer from Asturias. I specialize in creating user-friendly websites with WordPress and Laravel, always aiming to deliver clean, effective solutions. I'm passionate about turning ideas into impactful digital experiences, and I’m excited to collaborate and bring your project to life. Let’s make it happen!
+                <h2 class="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">About Me 🌊🧑‍💻🚀</h2>
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                    <div class="relative">
+                        <img src="./img/yo.jpg" alt="Andrés Suárez" class="profile-image rounded-full" />
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                    </div>
+                    <div class="max-w-2xl text-center lg:text-left">
+                        <p class="text-lg leading-relaxed mb-6">
+                          Hi, I'm Andrés Suárez, a web developer from Asturias. I specialize in creating user-friendly websites with WordPress and Laravel, always aiming to deliver clean, effective solutions. I'm passionate about turning ideas into impactful digital experiences, and I'm excited to collaborate and bring your project to life. Let's make it happen!
                         </p>
-                        
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <span class="badge badge-primary badge-lg">Laravel</span>
+                            <span class="badge badge-secondary badge-lg">WordPress</span>
+                            <span class="badge badge-accent badge-lg">PHP</span>
+                            <span class="badge badge-info badge-lg">JavaScript</span>
+                            <span class="badge badge-success badge-lg">SEO</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-16 bg-base-200">
+        <section id="projects" class="py-20 bg-base-200">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-10 text-center">My Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h2 class="text-5xl font-bold mb-4 text-center">My Projects</h2>
+                <p class="text-center text-lg opacity-70 mb-12">A showcase of my latest work and achievements</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                    <!-- ChefSnap Project -->
-<div class="project-card">
-  <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-    <figure class="px-4 pt-4">
-      <img src="./img/chefsnap1.png" alt="ChefSnap captura 1" class="rounded-xl h-48 w-full object-cover" />
-    </figure>
-    <div class="card-body">
-      <h3 class="card-title">ChefSnap</h3>
-      <p>ChefSnap transforma tus fotos de comida en auténticas obras de arte en segundos. Pensada para restaurantes que quieren mejorar su presencia digital sin invertir grandes sumas ni perder tiempo, utiliza IA avanzada para ajustar luz, color y nitidez de forma automática.</p>
-      <div class="card-actions justify-end mt-2">
-        <div class="badge badge-primary">Laravel</div>
-        <div class="badge badge-secondary">Redis</div>
-        <div class="badge badge-info">TailwindCSS</div>
-        <div class="badge badge-warning">JavaScript</div>
-        <div class="badge badge-accent">CSS</div>
-        <div class="badge badge-success">Stripe</div>
-        <div class="badge badge-info">Google Auth</div>
-        <div class="badge badge-neutral">IA</div>
-      </div>
-      <label for="chefsnap-modal" class="btn btn-primary mt-4">Ver más</label>
-    </div>
-  </div>
-</div>
+                   <div class="project-card">
+                     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                       <figure class="px-4 pt-4">
+                         <img src="./img/chefsnap1.png" alt="ChefSnap captura 1" class="project-image rounded-xl" />
+                       </figure>
+                       <div class="card-body">
+                         <h3 class="card-title text-xl mb-2">ChefSnap</h3>
+                         <p class="text-sm opacity-80 flex-grow">ChefSnap transforma tus fotos de comida en auténticas obras de arte en segundos. Pensada para restaurantes que quieren mejorar su presencia digital sin invertir grandes sumas ni perder tiempo, utiliza IA avanzada para ajustar luz, color y nitidez de forma automática.</p>
+                         <div class="card-actions justify-start mt-4 flex-wrap">
+                           <div class="badge badge-primary">Laravel</div>
+                           <div class="badge badge-secondary">Redis</div>
+                           <div class="badge badge-info">TailwindCSS</div>
+                           <div class="badge badge-warning">JavaScript</div>
+                           <div class="badge badge-accent">CSS</div>
+                           <div class="badge badge-success">Stripe</div>
+                           <div class="badge badge-info">Google Auth</div>
+                           <div class="badge badge-neutral">IA</div>
+                         </div>
+                         <label for="chefsnap-modal" class="btn btn-primary btn-block mt-4">Ver más</label>
+                       </div>
+                     </div>
+                   </div>
 
-<!-- Modal ChefSnap -->
-<input type="checkbox" id="chefsnap-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-full max-w-4xl">
-    <h3 class="font-bold text-lg mb-4">ChefSnap - Vista Detallada</h3>
-    <!-- Carrusel de imágenes -->
-    <div class="carousel w-full">
-      <!-- Slides 1 a 9 -->
-      <div id="chefsnap-slide1" class="carousel-item relative w-full">
-        <img src="./img/chefsnap1.png" class="w-full h-auto rounded-lg object-contain" alt="ChefSnap captura 1" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#chefsnap-slide9" class="btn btn-circle">❮</a>
-          <a href="#chefsnap-slide2" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <div id="chefsnap-slide2" class="carousel-item relative w-full">
-        <img src="./img/chefsnap2.png" class="w-full h-auto rounded-lg object-contain" alt="ChefSnap captura 2" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#chefsnap-slide1" class="btn btn-circle">❮</a>
-          <a href="#chefsnap-slide3" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Repetir estructuras similares para chefsnap3.png a chefsnap9.png -->
-      <div id="chefsnap-slide3" class="carousel-item relative w-full">
-        <img src="./img/chefsnap3.png" class="w-full h-auto rounded-lg object-contain" alt="ChefSnap captura 3" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#chefsnap-slide2" class="btn btn-circle">❮</a>
-          <a href="#chefsnap-slide4" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- ... hasta chefsnap9.png ... -->
-      <div id="chefsnap-slide9" class="carousel-item relative w-full">
-        <img src="./img/chefsnap9.png" class="w-full h-auto rounded-lg object-contain" alt="ChefSnap captura 9" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#chefsnap-slide8" class="btn btn-circle">❮</a>
-          <a href="#chefsnap-slide1" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-    </div>
-    <!-- Indicadores del carrusel -->
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#chefsnap-slide1" class="btn btn-xs">1</a>
-      <a href="#chefsnap-slide2" class="btn btn-xs">2</a>
-      <a href="#chefsnap-slide3" class="btn btn-xs">3</a>
-      <a href="#chefsnap-slide4" class="btn btn-xs">4</a>
-      <a href="#chefsnap-slide5" class="btn btn-xs">5</a>
-      <a href="#chefsnap-slide6" class="btn btn-xs">6</a>
-      <a href="#chefsnap-slide7" class="btn btn-xs">7</a>
-      <a href="#chefsnap-slide8" class="btn btn-xs">8</a>
-      <a href="#chefsnap-slide9" class="btn btn-xs">9</a>
-    </div>
-    <!-- Descripción larga del proyecto -->
-    <p class="py-4">
-      <strong>ChefSnap</strong> es una solución todo-en-uno para la mejora automática de fotografía gastronómica, diseñada específicamente para negocios de hostelería que buscan un impulso inmediato en su marketing digital.
-      Al subir tus imágenes, el sistema emplea modelos de inteligencia artificial para analizar composición, iluminación y colores, y aplica ajustes inteligentes de manera automática: correcciones de exposición, realce de tonos, balance de blancos y nitidez. Todo en cuestión de segundos.
-      <br><br>
-      Detrás de esa experiencia ultrarrápida está un backend en <em>Laravel</em> que organiza las peticiones en colas <em>Redis</em>, garantizando escalabilidad y respuesta ágil aún con cargas altas. La pasarela de pago <em>Stripe</em> permite, cuando quieras monetizar packs de retoques, ofrecer planes de suscripción o compras puntuales con total seguridad.
-      <br><br>
-      Para la autenticación de usuario, integramos <em>Google Auth</em>, de modo que tus colaboradores puedan acceder con un clic y subir fotos sin memorizar contraseñas. Y gracias al sistema de notificaciones y seguimiento de colas, siempre sabes el estado de cada imagen: subida, en procesamiento o lista para descargar.
-      <br><br>
-      Con <strong>ChefSnap</strong>, tus platos lucen tan apetitosos que impulsan reservas, “me gusta” y compartidos en redes sociales, sin que tú o tu equipo tengáis que dedicar horas al retoque manual.
-    </p>
-    <!-- Acción del modal -->
-    <div class="modal-action">
-      <label for="chefsnap-modal" class="btn">Cerrar</label>
-    </div>
-  </div>
-</div>
+                   <!-- Sociogram.app Project -->
+                   <div class="project-card">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                          <figure class="px-4 pt-4">
+                              <img src="./img/sociogram.png" alt="Sociogram.app" class="project-image rounded-xl" />
+                          </figure>
+                          <div class="card-body">
+                              <h3 class="card-title text-xl mb-2">Sociogram.app</h3>
+                              <p class="text-sm opacity-80 flex-grow">Sociogram.app is a Laravel-based platform for educators and researchers, allowing the creation and analysis of sociograms. It simplifies social network analysis with intuitive tools and data visualization.</p>
+                              <div class="card-actions justify-start mt-4 flex-wrap">
+                                  <div class="badge badge-success">Laravel</div>
+                                  <div class="badge badge-warning">PHP</div>
+                                  <div class="badge badge-info">MySQL</div>
+                              </div>
+                              <label for="sociogram-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                          </div>
+                      </div>
+                  </div>
 
+                   <!-- Global Glider Project -->
+                   <div class="project-card">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                          <figure class="px-4 pt-4">
+                              <img src="./img/global-glider.png" alt="Global Glider" class="project-image rounded-xl" />
+                          </figure>
+                          <div class="card-body">
+                              <h3 class="card-title text-xl mb-2">Global Glider</h3>
+                              <p class="text-sm opacity-80 flex-grow">Global Glider is an e-commerce platform built with PHP and JavaScript. It integrates PayPal and offers real-time surf spot conditions, allowing users to plan surf trips and make secure purchases.</p>
+                              <div class="card-actions justify-start mt-4 flex-wrap">
+                                  <div class="badge badge-error">PHP</div>
+                                  <div class="badge badge-primary">HTML</div>
+                                  <div class="badge badge-accent">CSS</div>
+                              </div>
+                              <label for="glider-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                          </div>
+                      </div>
+                  </div>
 
-                     <!-- Sociogram.app Project -->
-                     <div class="project-card">
-                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                            <figure class="px-4 pt-4">
-                                <img src="./img/sociogram.png" alt="Sociogram.app" class="rounded-xl h-48 w-full object-cover" />
-                            </figure>
-                            <div class="card-body">
-                                <h3 class="card-title">Sociogram.app</h3>
-                                <p>Sociogram.app is a Laravel-based platform for educators and researchers, allowing the creation and analysis of sociograms. It simplifies social network analysis with intuitive tools and data visualization.</p>
-                                <div class="card-actions justify-end mt-2">
-                                    <div class="badge badge-success">Laravel</div>
-                                    <div class="badge badge-warning">PHP</div>
-                                    <div class="badge badge-info">MySQL</div>
+                  <!-- LaReserva21 Project -->
+                  <div class="project-card">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                          <figure class="px-4 pt-4">
+                              <img src="./img/reserva1.png" alt="LaReserva21" class="project-image rounded-xl" />
+                          </figure>
+                          <div class="card-body">
+                              <h3 class="card-title text-xl mb-2">LaReserva21</h3>
+                              <p class="text-sm opacity-80 flex-grow">LaReserva21 is a WordPress website for a beach restaurant, focused on SEO and client acquisition. It helped increase customer traffic by optimizing for keywords like "chiringuito Asturias" and integrating Google My Business.</p>
+                              <div class="card-actions justify-start mt-4 flex-wrap">
+                                  <div class="badge badge-primary">WordPress</div>
+                                  <div class="badge badge-secondary">HTML</div>
+                                  <div class="badge badge-accent">CSS</div>
+                              </div>
+                              <label for="reserva21-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Andresokei Project -->
+                  <div class="project-card">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                          <figure class="px-4 pt-4">
+                              <img src="./img/okei1.png" alt="Andresokei" class="project-image rounded-xl" />
+                          </figure>
+                          <div class="card-body">
+                              <h3 class="card-title text-xl mb-2">Andresokei</h3>
+                              <p class="text-sm opacity-80 flex-grow">Andresokei is a WordPress portfolio site for a photographer and videographer, designed to generate leads for wedding photography in Asturias. It uses SEO to attract couples seeking wedding services.</p>
+                              <div class="card-actions justify-start mt-4 flex-wrap">
+                                  <div class="badge badge-primary">WordPress</div>
+                                  <div class="badge badge-secondary">HTML</div>
+                                  <div class="badge badge-accent">CSS</div>
+                              </div>
+                              <label for="okei-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Visitar Luarca Project -->
+                  <div class="project-card">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+                          <figure class="px-4 pt-4">
+                              <img src="./img/luarca.png" alt="Visitar Luarca" class="project-image rounded-xl" />
+                          </figure>
+                          <div class="card-body">
+                              <h3 class="card-title text-xl mb-2">Visitar Luarca</h3>
+                              <p class="text-sm opacity-80 flex-grow">Visitar Luarca is a WordPress-based tourist guide that showcases attractions, accommodations, and events in Luarca. It helps visitors plan their trips with easy access to local information.</p>
+                              <div class="card-actions justify-start mt-4 flex-wrap">
+                                  <div class="badge badge-primary">WordPress</div>
+                                  <div class="badge badge-secondary">HTML</div>
+                                  <div class="badge badge-accent">CSS</div>
+                              </div>
+                              <label for="luarca-modal" class="btn btn-primary btn-block mt-4">View More</label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+                <!-- ChefSnap Modal -->
+                <input type="checkbox" id="chefsnap-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-2xl mb-6">ChefSnap - Vista Detallada</h3>
+                    <div class="carousel w-full">
+                      <div id="chefsnap-slide1" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap1.png" class="carousel-image rounded-lg" alt="ChefSnap captura 1" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide9" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="chefsnap-slide2" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap2.png" class="carousel-image rounded-lg" alt="ChefSnap captura 2" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="chefsnap-slide3" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap3.png" class="carousel-image rounded-lg" alt="ChefSnap captura 3" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide4" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="chefsnap-slide9" class="carousel-item relative w-full">
+                        <img src="./img/chefsnap9.png" class="carousel-image rounded-lg" alt="ChefSnap captura 9" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#chefsnap-slide8" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#chefsnap-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#chefsnap-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#chefsnap-slide2" class="btn btn-xs">2</a>
+                      <a href="#chefsnap-slide3" class="btn btn-xs">3</a>
+                      <a href="#chefsnap-slide9" class="btn btn-xs">9</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed">
+                        <strong>ChefSnap</strong> es una solución todo-en-uno para la mejora automática de fotografía gastronómica, diseñada específicamente para negocios de hostelería que buscan un impulso inmediato en su marketing digital.
+                        Al subir tus imágenes, el sistema emplea modelos de inteligencia artificial para analizar composición, iluminación y colores, y aplica ajustes inteligentes de manera automática: correcciones de exposición, realce de tonos, balance de blancos y nitidez. Todo en cuestión de segundos.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                        Detrás de esa experiencia ultrarrápida está un backend en <em>Laravel</em> que organiza las peticiones en colas <em>Redis</em>, garantizando escalabilidad y respuesta ágil aún con cargas altas. La pasarela de pago <em>Stripe</em> permite, cuando quieras monetizar packs de retoques, ofrecer planes de suscripción o compras puntuales con total seguridad.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <label for="chefsnap-modal" class="btn btn-primary">Cerrar</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LaReserva21 Modal -->
+                <input type="checkbox" id="reserva21-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-2xl mb-6">LaReserva21 - Vista Detallada</h3>
+                    <div class="carousel w-full">
+                      <div id="reserva-slide1" class="carousel-item relative w-full">
+                        <img src="./img/reserva1.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 1" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#reserva-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#reserva-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="reserva-slide2" class="carousel-item relative w-full">
+                        <img src="./img/reserva2.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 2" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#reserva-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#reserva-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="reserva-slide3" class="carousel-item relative w-full">
+                        <img src="./img/reserva3.png" class="carousel-image rounded-lg" alt="LaReserva21 Imagen 3" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#reserva-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#reserva-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#reserva-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#reserva-slide2" class="btn btn-xs">2</a>
+                      <a href="#reserva-slide3" class="btn btn-xs">3</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed">
+                          LaReserva21 is a website designed to enhance the digital presence of a coastal restaurant, with a strong emphasis on SEO and client acquisition. I successfully positioned the site for high-impact transactional keywords such as "chiringuito Asturias," which drove organic traffic to the business. Additionally, I optimized the user experience by ensuring the menu was easy to find, allowing visitors to quickly access key information.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                          Moreover, I integrated the website with Google My Business, making it easier for customers to discover the restaurant via local search results. This strategic SEO work and improved online visibility contributed to a significant increase in customer footfall and reservations.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <a href="https://lareserva21.com" class="btn btn-secondary" target="_blank">Visitar sitio web</a>
+                      <label for="reserva21-modal" class="btn btn-primary">Close</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Andresokei Modal -->
+                <input type="checkbox" id="okei-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-2xl mb-6">Andresokei - Detailed View</h3>
+                    <div class="carousel w-full">
+                      <div id="andres-slide1" class="carousel-item relative w-full">
+                        <img src="./img/okei1.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 1" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#andres-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#andres-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="andres-slide2" class="carousel-item relative w-full">
+                        <img src="./img/okei2.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 2" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#andres-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#andres-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="andres-slide3" class="carousel-item relative w-full">
+                        <img src="./img/okei3.png" class="carousel-image rounded-lg" alt="Andresokei Screenshot 3" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#andres-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#andres-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#andres-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#andres-slide2" class="btn btn-xs">2</a>
+                      <a href="#andres-slide3" class="btn btn-xs">3</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed">
+                          Andresokei is a dynamic WordPress and Elementor-powered website designed to achieve two key goals: presenting the portfolio of a photographer and videographer, and driving lead generation for wedding photography services in Asturias.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                          The website is structured to highlight the photographer's best work through an elegant and responsive design, making it easy for potential clients to explore. Additionally, the site is optimized for SEO, focusing on keywords like "wedding photographer Asturias" to ensure it ranks well in search engines and captures the attention of couples planning their weddings in the region.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <a href="https://andresokei.com" class="btn btn-secondary" target="_blank">Visit Website</a>
+                      <label for="okei-modal" class="btn btn-primary">Close</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sociogram Modal -->
+                <input type="checkbox" id="sociogram-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-2xl mb-6">Sociogram.app - Vista Detallada</h3>
+                    <div class="carousel w-full">
+                      <div id="socio-slide1" class="carousel-item relative w-full">
+                        <img src="./img/sociogram.png" class="carousel-image rounded-lg" alt="Sociogram Imagen 1" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#socio-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#socio-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="socio-slide2" class="carousel-item relative w-full">
+                        <img src="./img/sociogram2.png" class="carousel-image rounded-lg" alt="Sociogram Imagen 2" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#socio-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#socio-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="socio-slide3" class="carousel-item relative w-full">
+                        <img src="./img/sociograma4.jpg" class="carousel-image rounded-lg" alt="Sociogram Imagen 3" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#socio-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#socio-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#socio-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#socio-slide2" class="btn btn-xs">2</a>
+                      <a href="#socio-slide3" class="btn btn-xs">3</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed">
+                          Sociogram.app is an innovative platform built with Laravel, aimed at providing educators and social researchers with the tools to create and analyze sociograms effectively. This web application facilitates social network analysis, allowing users to visualize interpersonal relationships within groups, such as classrooms or research samples.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                          Key features of Sociogram.app include an intuitive dashboard for managing groups and students, as well as a range of data visualization options that help users uncover social dynamics. The platform also integrates advanced analytics, offering insights that are valuable for understanding group interactions, peer relationships, and social hierarchies.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <a href="https://sociogram.app" class="btn btn-secondary" target="_blank">Visitar sitio web</a>
+                      <label for="sociogram-modal" class="btn btn-primary">Cerrar</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Global Glider Modal -->
+                <input type="checkbox" id="glider-modal" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box w-full max-w-6xl">
+                        <h3 class="font-bold text-2xl mb-6">Global Glider - Detailed View</h3>
+                        <div class="carousel w-full">
+                            <div id="glide1" class="carousel-item relative w-full">
+                                <img src="./img/global-glider.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 1" />
+                                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                    <a href="#glide3" class="btn btn-circle btn-primary">❮</a> 
+                                    <a href="#glide2" class="btn btn-circle btn-primary">❯</a>
                                 </div>
-                                <label for="sociogram-modal" class="btn btn-primary mt-4">View More</label>
+                            </div> 
+                            <div id="glide2" class="carousel-item relative w-full">
+                                <img src="./img/global-glider2.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 2" />
+                                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                    <a href="#glide1" class="btn btn-circle btn-primary">❮</a> 
+                                    <a href="#glide3" class="btn btn-circle btn-primary">❯</a>
+                                </div>
+                            </div> 
+                            <div id="glide3" class="carousel-item relative w-full">
+                                <img src="./img/global-glider3.png" class="carousel-image rounded-lg" alt="Global Glider Screenshot 3" />
+                                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                    <a href="#glide2" class="btn btn-circle btn-primary">❮</a> 
+                                    <a href="#glide1" class="btn btn-circle btn-primary">❯</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                     <!-- Global Glider Project -->
-                     <div class="project-card">
-                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                            <figure class="px-4 pt-4">
-                                <img src="./img/global-glider.png" alt="Global Glider" class="rounded-xl h-48 w-full object-cover" />
-                            </figure>
-                            <div class="card-body">
-                                <h3 class="card-title">Global Glider</h3>
-                                <p>Global Glider is an e-commerce platform built with PHP and JavaScript. It integrates PayPal and offers real-time surf spot conditions, allowing users to plan surf trips and make secure purchases.</p>
-                                <div class="card-actions justify-end mt-2">
-                                    <div class="badge badge-error">PHP</div>
-                                    <div class="badge badge-primary">HTML</div>
-                                    <div class="badge badge-accent">CSS</div>
-                                </div>
-                                <label for="glider-modal" class="btn btn-primary mt-4">View More</label>
-                            </div>
+                        <div class="flex justify-center w-full py-4 gap-2">
+                            <a href="#glide1" class="btn btn-xs btn-primary">1</a> 
+                            <a href="#glide2" class="btn btn-xs">2</a> 
+                            <a href="#glide3" class="btn btn-xs">3</a>
                         </div>
-                    </div>
-
-                    <!-- LaReserva21 Project -->
-                    <div class="project-card">
-                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                            <figure class="px-4 pt-4">
-                                <img src="./img/reserva1.png" alt="LaReserva21" class="rounded-xl h-48 w-full object-cover" />
-                            </figure>
-                            <div class="card-body">
-                                <h3 class="card-title">LaReserva21</h3>
-                                <p>LaReserva21 is a WordPress website for a beach restaurant, focused on SEO and client acquisition. It helped increase customer traffic by optimizing for keywords like "chiringuito Asturias" and integrating Google My Business.</p>
-                                <div class="card-actions justify-end mt-2">
-                                    <div class="badge badge-primary">WordPress</div>
-                                    <div class="badge badge-secondary">HTML</div>
-                                    <div class="badge badge-accent">CSS</div>
-                                </div>
-                                <label for="reserva21-modal" class="btn btn-primary mt-4">View More</label>
-                            </div>
+                        <div class="prose max-w-none">
+                            <p class="text-base leading-relaxed">
+                                Global Glider is an innovative e-commerce platform designed to cater to surf enthusiasts. Built using PHP and vanilla JavaScript, the platform allows users to search surf spots across the globe and access real-time information about weather and wave conditions, making it an essential tool for surfers planning their next adventure.
+                            </p>
+                            <p class="text-base leading-relaxed">
+                                The site is fully integrated with PayPal's API, enabling secure and seamless transactions for booking surf trips or purchasing surf-related gear. The combination of real-time data and smooth payment integration provides users with a complete and reliable service for planning their surf experiences.
+                            </p>
                         </div>
-                    </div>
-
-                    <!-- Andresokei Project -->
-                    <div class="project-card">
-                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                            <figure class="px-4 pt-4">
-                                <img src="./img/okei1.png" alt="Andresokei" class="rounded-xl h-48 w-full object-cover" />
-                            </figure>
-                            <div class="card-body">
-                                <h3 class="card-title">Andresokei</h3>
-                                <p>Andresokei is a WordPress portfolio site for a photographer and videographer, designed to generate leads for wedding photography in Asturias. It uses SEO to attract couples seeking wedding services.</p>
-                                <div class="card-actions justify-end mt-2">
-                                    <div class="badge badge-primary">WordPress</div>
-                                    <div class="badge badge-secondary">HTML</div>
-                                    <div class="badge badge-accent">CSS</div>
-                                </div>
-                                <label for="okei-modal" class="btn btn-primary mt-4">View More</label>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-
-                   
-
-                    <!-- Visitar Luarca Project -->
-                    <div class="project-card">
-                        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                            <figure class="px-4 pt-4">
-                                <img src="./img/luarca.png" alt="Visitar Luarca" class="rounded-xl h-48 w-full object-cover" />
-                            </figure>
-                            <div class="card-body">
-                                <h3 class="card-title">Visitar Luarca</h3>
-                                <p>Visitar Luarca is a WordPress-based tourist guide that showcases attractions, accommodations, and events in Luarca. It helps visitors plan their trips with easy access to local information.
-
-                                </p>
-                                <div class="card-actions justify-end mt-2">
-                                    <div class="badge badge-primary">WordPress</div>
-                                    <div class="badge badge-secondary">HTML</div>
-                                    <div class="badge badge-accent">CSS</div>
-                                </div>
-                                <label for="luarca-modal" class="btn btn-primary mt-4">View More</label>
-                            </div>
+                        <div class="modal-action">
+                            <label for="glider-modal" class="btn btn-primary">Close</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Modals -->
-                <!-- Modal for LaReserva21 -->
-                <!-- Modal for LaReserva21 with multiple images -->
-<!-- Modal de LaReserva21 -->
-<input type="checkbox" id="reserva21-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-full max-w-4xl">
-    <h3 class="font-bold text-lg mb-4">LaReserva21 - Vista Detallada</h3>
-    <!-- Carrusel de imágenes -->
-    <div class="carousel w-full">
-      <!-- Imagen 1 -->
-      <div id="reserva-slide1" class="carousel-item relative w-full">
-        <img src="./img/reserva1.png" class="w-full rounded-lg" alt="LaReserva21 Imagen 1" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#reserva-slide3" class="btn btn-circle">❮</a>
-          <a href="#reserva-slide2" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Imagen 2 -->
-      <div id="reserva-slide2" class="carousel-item relative w-full">
-        <img src="./img/reserva2.png" class="w-full rounded-lg" alt="LaReserva21 Imagen 2" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#reserva-slide1" class="btn btn-circle">❮</a>
-          <a href="#reserva-slide3" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Imagen 3 -->
-      <div id="reserva-slide3" class="carousel-item relative w-full">
-        <img src="./img/reserva3.png" class="w-full rounded-lg" alt="LaReserva21 Imagen 3" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#reserva-slide2" class="btn btn-circle">❮</a>
-          <a href="#reserva-slide1" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-    </div>
-    <!-- Indicadores del carrusel -->
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#reserva-slide1" class="btn btn-xs">1</a>
-      <a href="#reserva-slide2" class="btn btn-xs">2</a>
-      <a href="#reserva-slide3" class="btn btn-xs">3</a>
-    </div>
-    <!-- Descripción del proyecto -->
-    <p class="py-4">
-        LaReserva21 is a website designed to enhance the digital presence of a coastal restaurant, with a strong emphasis on SEO and client acquisition. I successfully positioned the site for high-impact transactional keywords such as "chiringuito Asturias," which drove organic traffic to the business. Additionally, I optimized the user experience by ensuring the menu was easy to find, allowing visitors to quickly access key information. <br><br>
-
-       <br> Moreover, I integrated the website with Google My Business, making it easier for customers to discover the restaurant via local search results. This strategic SEO work and improved online visibility contributed to a significant increase in customer footfall and reservations.
-    </p>
-    <!-- Botones de acción del modal -->
-    <div class="modal-action">
-      <a href="https://lareserva21.com" class="btn btn-primary" target="_blank">Visitar sitio web</a>
-      <label for="reserva21-modal" class="btn">Close</label>
-    </div>
-  </div>
-</div>
-
-
-
-                <!-- Modal for Andresokei -->
-                <!-- Modal for Andresokei -->
-<input type="checkbox" id="okei-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-full max-w-4xl">
-    <h3 class="font-bold text-lg mb-4">Andresokei - Detailed View</h3>
-    <!-- Image Carousel -->
-    <div class="carousel w-full">
-      <!-- Slide 1 -->
-      <div id="andres-slide1" class="carousel-item relative w-full">
-        <img src="./img/okei1.png" class="w-full rounded-lg" alt="Andresokei Screenshot 1" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#andres-slide3" class="btn btn-circle">❮</a>
-          <a href="#andres-slide2" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Slide 2 -->
-      <div id="andres-slide2" class="carousel-item relative w-full">
-        <img src="./img/okei2.png" class="w-full rounded-lg" alt="Andresokei Screenshot 2" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#andres-slide1" class="btn btn-circle">❮</a>
-          <a href="#andres-slide3" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div id="andres-slide3" class="carousel-item relative w-full">
-        <img src="./img/okei3.png" class="w-full rounded-lg" alt="Andresokei Screenshot 3" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#andres-slide2" class="btn btn-circle">❮</a>
-          <a href="#andres-slide1" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-    </div>
-    <!-- Carousel Indicators -->
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#andres-slide1" class="btn btn-xs">1</a>
-      <a href="#andres-slide2" class="btn btn-xs">2</a>
-      <a href="#andres-slide3" class="btn btn-xs">3</a>
-    </div>
-    <!-- Project Description -->
-    <p class="py-4">
-        Andresokei is a dynamic WordPress and Elementor-powered website designed to achieve two key goals: presenting the portfolio of a photographer and videographer, and driving lead generation for wedding photography services in Asturias. <br><br>
-
-        The website is structured to highlight the photographer's best work through an elegant and responsive design, making it easy for potential clients to explore. Additionally, the site is optimized for SEO, focusing on keywords like "wedding photographer Asturias" to ensure it ranks well in search engines and captures the attention of couples planning their weddings in the region.<br><br>
-        
-        This combination of showcasing creative talent and driving targeted traffic has helped position Andresokei as a go-to option for wedding photography services in Asturias.
-    </p>
-    <!-- Modal Action Buttons -->
-    <div class="modal-action">
-      <a href="https://andresokei.com" class="btn btn-primary" target="_blank">Visit Website</a>
-      <label for="okei-modal" class="btn">Close</label>
-    </div>
-  </div>
-</div>
-
-
-                <!-- Modal for Sociogram.app -->
-                <!-- Modal de Sociogram.app -->
-<input type="checkbox" id="sociogram-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-full max-w-4xl">
-    <h3 class="font-bold text-lg mb-4">Sociogram.app - Vista Detallada</h3>
-    <!-- Carrusel de imágenes -->
-    <div class="carousel w-full">
-      <!-- Imagen 1 -->
-      <div id="socio-slide1" class="carousel-item relative w-full">
-        <img src="./img/sociogram.png" class="w-full rounded-lg" alt="Sociogram Imagen 1" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#socio-slide3" class="btn btn-circle">❮</a>
-          <a href="#socio-slide2" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Imagen 2 -->
-      <div id="socio-slide2" class="carousel-item relative w-full">
-        <img src="./img/sociogram2.png" class="w-full rounded-lg" alt="Sociogram Imagen 2" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#socio-slide1" class="btn btn-circle">❮</a>
-          <a href="#socio-slide3" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Imagen 3 -->
-      <div id="socio-slide3" class="carousel-item relative w-full">
-        <img src="./img/sociograma4.jpg" class="w-full rounded-lg" alt="Sociogram Imagen 3" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#socio-slide2" class="btn btn-circle">❮</a>
-          <a href="#socio-slide1" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-    </div>
-    <!-- Indicadores del carrusel -->
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#socio-slide1" class="btn btn-xs">1</a>
-      <a href="#socio-slide2" class="btn btn-xs">2</a>
-      <a href="#socio-slide3" class="btn btn-xs">3</a>
-    </div>
-    <!-- Descripción del proyecto -->
-    <p class="py-4">
-        Sociogram.app is an innovative platform built with Laravel, aimed at providing educators and social researchers with the tools to create and analyze sociograms effectively. This web application facilitates social network analysis, allowing users to visualize interpersonal relationships within groups, such as classrooms or research samples. <br><br>
-
-        Key features of Sociogram.app include an intuitive dashboard for managing groups and students, as well as a range of data visualization options that help users uncover social dynamics. The platform also integrates advanced analytics, offering insights that are valuable for understanding group interactions, peer relationships, and social hierarchies.<br><br>
-        
-        Built with a focus on usability and scalability, Sociogram.app is a powerful tool for educators and researchers who need to explore and interpret social connections in an accessible way.
-        
-        
-    </p>
-    <!-- Botones de acción del modal -->
-    <div class="modal-action">
-      <a href="https://sociogram.app" class="btn btn-primary" target="_blank">Visitar sitio web</a>
-      <label for="sociogram-modal" class="btn">Cerrar</label>
-    </div>
-  </div>
-</div>
-
-                
-
-
-                <!-- Modal for Global Glider -->
-                <!-- Modal for Global Glider with multiple images -->
-<input type="checkbox" id="glider-modal" class="modal-toggle" />
-<div class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <h3 class="font-bold text-lg mb-4">Global Glider - Detailed View</h3>
-        <div class="carousel w-full">
-            <div id="glide1" class="carousel-item relative w-full">
-                <img src="./img/global-glider.png" class="w-full rounded-lg" alt="Global Glider Screenshot 1" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#glide3" class="btn btn-circle">❮</a> 
-                    <a href="#glide2" class="btn btn-circle">❯</a>
+                <!-- Visitar Luarca Modal -->
+                <input type="checkbox" id="luarca-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-2xl mb-6">Visitar Luarca - Detailed View</h3>
+                    <div class="carousel w-full">
+                      <div id="luarca-slide1" class="carousel-item relative w-full">
+                        <img src="./img/luarca.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 1" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#luarca-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#luarca-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="luarca-slide2" class="carousel-item relative w-full">
+                        <img src="./img/luarca2.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 2" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#luarca-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#luarca-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="luarca-slide3" class="carousel-item relative w-full">
+                        <img src="./img/luarca3.png" class="carousel-image rounded-lg" alt="Visitar Luarca Screenshot 3" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#luarca-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#luarca-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#luarca-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#luarca-slide2" class="btn btn-xs">2</a>
+                      <a href="#luarca-slide3" class="btn btn-xs">3</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed">
+                        Visitar Luarca is a WordPress-based tourist guide for Luarca, showcasing local attractions, accommodations, and cultural events. The website aims to promote tourism in the region by providing visitors with comprehensive information and easy navigation.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                        The site features an intuitive design that makes it easy for tourists to discover what Luarca has to offer, from beautiful coastal views to local restaurants and accommodation options. The project demonstrates effective use of WordPress for tourism marketing and local SEO optimization.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <a href="https://luarcaasturias.es/" class="btn btn-secondary" target="_blank">Visit Website</a>
+                      <label for="luarca-modal" class="btn btn-primary">Close</label>
+                    </div>
+                  </div>
                 </div>
-            </div> 
-            <div id="glide2" class="carousel-item relative w-full">
-                <img src="./img/global-glider2.png" class="w-full rounded-lg" alt="Global Glider Screenshot 2" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#glide1" class="btn btn-circle">❮</a> 
-                    <a href="#glide3" class="btn btn-circle">❯</a>
-                </div>
-            </div> 
-            <div id="glide3" class="carousel-item relative w-full">
-                <img src="./img/global-glider3.png" class="w-full rounded-lg" alt="Global Glider Screenshot 3" />
-                <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#glide2" class="btn btn-circle">❮</a> 
-                    <a href="#glide1" class="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center w-full py-2 gap-2">
-            <a href="#glide1" class="btn btn-xs">1</a> 
-            <a href="#glide2" class="btn btn-xs">2</a> 
-            <a href="#glide3" class="btn btn-xs">3</a>
-        </div>
-        <p class="py-4">
-            Global Glider is an innovative e-commerce platform designed to cater to surf enthusiasts. Built using PHP and vanilla JavaScript, the platform allows users to search surf spots across the globe and access real-time information about weather and wave conditions, making it an essential tool for surfers planning their next adventure. <br><br>
-
-The site is fully integrated with PayPal's API, enabling secure and seamless transactions for booking surf trips or purchasing surf-related gear. The combination of real-time data and smooth payment integration provides users with a complete and reliable service for planning their surf experiences.
-<br><br>
-Global Glider stands out for its minimalist yet powerful approach, offering surfers a one-stop solution for exploring the best surf spots worldwide while ensuring they are equipped with up-to-date conditions
-        </p>
-        <div class="modal-action">
-            <label for="glider-modal" class="btn">Close</label>
-        </div>
-    </div>
-</div>
-
-                <!-- Modal for Visitar Luarca -->
-                <!-- Modal for Visitar Luarca -->
-<input type="checkbox" id="luarca-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-full max-w-4xl">
-    <h3 class="font-bold text-lg mb-4">Visitar Luarca - Detailed View</h3>
-    <!-- Image Carousel -->
-    <div class="carousel w-full">
-      <!-- Slide 1 -->
-      <div id="luarca-slide1" class="carousel-item relative w-full">
-        <img src="./img/luarca.png" class="w-full rounded-lg" alt="Visitar Luarca Screenshot 1" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#luarca-slide3" class="btn btn-circle">❮</a>
-          <a href="#luarca-slide2" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Slide 2 -->
-      <div id="luarca-slide2" class="carousel-item relative w-full">
-        <img src="./img/luarca2.png" class="w-full rounded-lg" alt="Visitar Luarca Screenshot 2" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#luarca-slide1" class="btn btn-circle">❮</a>
-          <a href="#luarca-slide3" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div id="luarca-slide3" class="carousel-item relative w-full">
-        <img src="./img/luarca3.png" class="w-full rounded-lg" alt="Visitar Luarca Screenshot 3" />
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#luarca-slide2" class="btn btn-circle">❮</a>
-          <a href="#luarca-slide1" class="btn btn-circle">❯</a>
-        </div>
-      </div>
-    </div>
-    <!-- Carousel Indicators -->
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#luarca-slide1" class="btn btn-xs">1</a>
-      <a href="#luarca-slide2" class="btn btn-xs">2</a>
-      <a href="#luarca-slide3" class="btn btn-xs">3</a>
-    </div>
-    <!-- Project Description -->
-    <p class="py-4">
-      Visitar Luarca is a WordPress-based tourist guide for Luarca, showcasing local attractions, accommodations, and cultural events. The website aims to promote tourism in the region by providing visitors with comprehensive information and easy navigation.
-    </p>
-    <!-- Modal Action Buttons -->
-    <div class="modal-action">
-      <a href="https://luarcaasturias.es/" class="btn btn-primary" target="_blank">Visit Website</a>
-      <label for="luarca-modal" class="btn">Close</label>
-    </div>
-  </div>
-</div>
-
         </section>
 
-        <section id="contact" class="py-16 bg-base-100">
+        <section id="contact" class="py-20 bg-gradient-to-br from-base-100 to-base-200">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-10 text-center">Get In Touch</h2>
-                <div class="max-w-md mx-auto">
-                    <form action="https://formspree.io/f/movageyg" method="POST">
-                        <div class="form-control mb-4">
-                            <label class="label" for="name">
-                                <span class="label-text">Your Name</span>
-                            </label>
-                            <input type="text" id="name" name="name" class="input input-bordered" required />
+                <h2 class="text-5xl font-bold mb-4 text-center">Get In Touch</h2>
+                <p class="text-center text-lg opacity-70 mb-12">Ready to start your next project? Let's make it happen!</p>
+                <div class="max-w-lg mx-auto">
+                    <div class="card bg-base-100 shadow-2xl">
+                        <div class="card-body">
+                            <form action="https://formspree.io/f/movageyg" method="POST" class="space-y-6">
+                                <div class="form-control">
+                                    <label class="label" for="name">
+                                        <span class="label-text font-semibold">Your Name</span>
+                                    </label>
+                                    <input type="text" id="name" name="name" class="input input-bordered input-primary w-full focus:input-primary" placeholder="Enter your name" required />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label" for="email">
+                                        <span class="label-text font-semibold">Your Email</span>
+                                    </label>
+                                    <input type="email" id="email" name="email" class="input input-bordered input-primary w-full focus:input-primary" placeholder="Enter your email" required />
+                                </div>
+                                <div class="form-control">
+                                    <label class="label" for="message">
+                                        <span class="label-text font-semibold">Your Message</span>
+                                    </label>
+                                    <textarea id="message" name="message" class="textarea textarea-bordered textarea-primary h-32 focus:textarea-primary resize-none" placeholder="Tell me about your project..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg w-full">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Your Message
+                                </button>
+                            </form>
                         </div>
-                        <div class="form-control mb-4">
-                            <label class="label" for="email">
-                                <span class="label-text">Your Email</span>
-                            </label>
-                            <input type="email" id="email" name="email" class="input input-bordered" required />
-                        </div>
-                        <div class="form-control mb-4">
-                            <label class="label" for="message">
-                                <span class="label-text">Your Message</span>
-                            </label>
-                            <textarea id="message" name="message" class="textarea textarea-bordered h-24" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full">Send Your Message</button>
-                    </form>
-                    
+                    </div>
                 </div>
-                 </section>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
-        <div class="grid grid-flow-col gap-4">
-            <a href="#about" class="link link-hover">About</a> 
-            <a href="#projects" class="link link-hover">Projects</a> 
-            <a href="#contact" class="link link-hover">Contact</a>
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+        <div class="grid grid-flow-col gap-6">
+            <a href="#about" class="link link-hover text-lg hover:text-primary transition-colors">About</a> 
+            <a href="#projects" class="link link-hover text-lg hover:text-primary transition-colors">Projects</a> 
+            <a href="#contact" class="link link-hover text-lg hover:text-primary transition-colors">Contact</a>
         </div> 
         <div>
-            <div class="grid grid-flow-col gap-4">
-                <a href="#"><i class="fab fa-twitter text-2xl"></i></a> 
-                <a href="#"><i class="fab fa-github text-2xl"></i></a> 
-                <a href="#"><i class="fab fa-linkedin text-2xl"></i></a>
+            <div class="grid grid-flow-col gap-6">
+                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-twitter"></i></a> 
+                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-github"></i></a> 
+                <a href="#" class="text-2xl hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
             </div>
         </div> 
         <div>
-            <p>© 2024 Andrés Suárez. All rights reserved.</p>
+            <p class="text-sm opacity-70">© 2024 Andrés Suárez. All rights reserved.</p>
         </div>
     </footer>
 </body>
