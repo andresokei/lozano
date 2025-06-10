@@ -253,7 +253,7 @@
                         </div>
                         <div class="stats stats-vertical lg:stats-horizontal shadow-lg">
                             <div class="stat">
-                                <div class="stat-value text-primary">6+</div>
+                                <div class="stat-value text-primary">7+</div>
                                 <div class="stat-title">Projects</div>
                             </div>
                             <div class="stat">
@@ -281,6 +281,34 @@
                 <p class="text-center text-lg opacity-70 mb-16">A showcase of my latest work and achievements</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                   <!-- BuscaTusFotos Project - NUEVO -->
+                   <div class="project-card">
+                     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 ring-2 ring-primary/20">
+                       <figure class="px-4 pt-4 overflow-hidden rounded-t-2xl relative">
+                         <div class="absolute top-6 left-6 z-10">
+                           <span class="badge badge-primary badge-lg font-bold">LATEST</span>
+                         </div>
+                         <img src="./img/buscatusfotos-preview.jpg" alt="BuscaTusFotos captura" class="project-image rounded-xl" />
+                       </figure>
+                       <div class="card-body">
+                         <h3 class="card-title text-xl mb-3 text-primary">BuscaTusFotos.com</h3>
+                         <p class="text-sm opacity-80 flex-grow leading-relaxed">Plataforma propia para vender fotos de surf. Sistema completo con gestión de sesiones, carrito de compras, pagos seguros con Stripe, watermarks automáticos y descarga segura. Mi respuesta a las costosas plataformas de terceros.</p>
+                         <div class="card-actions justify-start mt-4 flex-wrap">
+                           <div class="badge badge-primary">Laravel 10</div>
+                           <div class="badge badge-secondary">MySQL</div>
+                           <div class="badge badge-success">Stripe</div>
+                           <div class="badge badge-info">Nginx</div>
+                           <div class="badge badge-warning">VPS</div>
+                           <div class="badge badge-accent">Watermarks</div>
+                         </div>
+                         <label for="buscatusfotos-modal" class="btn btn-primary btn-block mt-6 btn-custom">
+                             <i class="fas fa-eye mr-2"></i>
+                             Ver más
+                         </label>
+                       </div>
+                     </div>
+                   </div>
 
                    <!-- ChefSnap Project -->
                    <div class="project-card">
@@ -419,6 +447,66 @@
                       </div>
                   </div>
               </div>
+
+                <!-- BuscaTusFotos Modal - NUEVO -->
+                <input type="checkbox" id="buscatusfotos-modal" class="modal-toggle" />
+                <div class="modal">
+                  <div class="modal-box w-full max-w-6xl">
+                    <h3 class="font-bold text-3xl mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">BuscaTusFotos.com - Vista Detallada</h3>
+                    <div class="carousel w-full">
+                      <div id="busca-slide1" class="carousel-item relative w-full">
+                        <img src="./img/buscatusfotos-home.jpg" class="carousel-image" alt="BuscaTusFotos Homepage" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#busca-slide3" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#busca-slide2" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="busca-slide2" class="carousel-item relative w-full">
+                        <img src="./img/buscatusfotos-gallery.jpg" class="carousel-image" alt="BuscaTusFotos Gallery" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#busca-slide1" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#busca-slide3" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                      <div id="busca-slide3" class="carousel-item relative w-full">
+                        <img src="./img/buscatusfotos-checkout.jpg" class="carousel-image" alt="BuscaTusFotos Checkout" />
+                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href="#busca-slide2" class="btn btn-circle btn-primary">❮</a>
+                          <a href="#busca-slide1" class="btn btn-circle btn-primary">❯</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center w-full py-4 gap-2">
+                      <a href="#busca-slide1" class="btn btn-xs btn-primary">1</a>
+                      <a href="#busca-slide2" class="btn btn-xs">2</a>
+                      <a href="#busca-slide3" class="btn btn-xs">3</a>
+                    </div>
+                    <div class="prose max-w-none">
+                      <p class="text-base leading-relaxed mb-4">
+                        <strong>BuscaTusFotos.com</strong> es mi respuesta personal a las costosas plataformas de venta de fotos online. Tras pagar 30€/mes por servicios que apenas utilizaba, decidí crear mi propia solución utilizando Laravel 10.
+                      </p>
+                      <p class="text-base leading-relaxed mb-4">
+                        La plataforma incluye un sistema completo de gestión de sesiones fotográficas, carrito de compras con precios escalonados, integración segura con Stripe para pagos, watermarks automáticos en las previews, y un sistema de descarga segura con tokens temporales UUID válidos por 72 horas.
+                      </p>
+                      <p class="text-base leading-relaxed mb-4">
+                        <strong>Retos técnicos superados:</strong> Configuración de límites de upload para archivos RAW de gran tamaño, protección de imágenes originales mediante URLs firmadas, generación de archivos ZIP on-the-fly para descargas múltiples, y optimización del rendimiento con colas de procesamiento.
+                      </p>
+                      <p class="text-base leading-relaxed">
+                        <strong>Resultado:</strong> De 30€/mes + comisiones a menos de 5€/mes en hosting VPS, con control total sobre funcionalidades, diseño y roadmap futuro. La plataforma está en producción y permite a los surfistas encontrar y comprar sus fotos de forma autónoma.
+                      </p>
+                    </div>
+                    <div class="modal-action">
+                      <a href="https://buscatusfotos.com" class="btn btn-secondary btn-custom" target="_blank">
+                          <i class="fas fa-external-link-alt mr-2"></i>
+                          Visitar sitio web
+                      </a>
+                      <label for="buscatusfotos-modal" class="btn btn-primary btn-custom">
+                          <i class="fas fa-times mr-2"></i>
+                          Cerrar
+                      </label>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- ChefSnap Modal with ALL 9 images -->
                 <input type="checkbox" id="chefsnap-modal" class="modal-toggle" />
